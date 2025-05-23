@@ -1,14 +1,18 @@
 import express from "express";
 import bodyParser from "body-parser";
 import connectDB from "./db_config/Connection.js";
+import cors from "cors";
 
+const app = express();
+app.use(cors());
+const PORT = process.env.PORT || 8080;
+
+/* connection Db */
 connectDB();
+
 /*dotenv  */
 import dotenv from "dotenv";
 dotenv.config();
-
-const app = express();
-const PORT = process.env.PORT || 8080;
 
 /* Middlewares */
 app.use(bodyParser.json());
