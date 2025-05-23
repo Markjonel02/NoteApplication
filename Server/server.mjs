@@ -1,12 +1,14 @@
 import express from "express";
 import bodyParser from "body-parser";
+import connectDB from "./db_config/Connection.js";
 
+connectDB();
 /*dotenv  */
 import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 /* Middlewares */
 app.use(bodyParser.json());
