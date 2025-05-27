@@ -4,7 +4,7 @@ import { Avatar } from "@chakra-ui/react";
 import TopNavigation from "@/components/TopNavigation";
 import MainContainer from "./components/MainContainer";
 import SideNavigationBar from "./components/SideNavigationBar";
-
+import Folders from "./components/Folders";
 function App() {
   return (
     <>
@@ -25,6 +25,7 @@ function App() {
                 This is a sample application demonstrating the use of Chakra UI
                 components.
               </Text>
+              <Folders />
             </Box>
           </Box>
         </MainContainer>
