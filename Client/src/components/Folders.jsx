@@ -14,7 +14,9 @@ import { useState } from "react";
 import { TbPencilPlus } from "react-icons/tb";
 import { FaNoteSticky } from "react-icons/fa6";
 import { FaFileCirclePlus } from "react-icons/fa6";
-
+import { IoFolderSharp } from "react-icons/io5";
+import { HiPencilSquare } from "react-icons/hi2";
+import Addnotes from "./Addnotes";
 const folders = [
   { title: "Movie Review", date: "12/12/2021", color: "blue.100" },
   { title: "Class Notes", date: "12/12/2021", color: "pink.100" },
@@ -84,7 +86,8 @@ const Folders = () => {
                   boxShadow="md"
                   textAlign="left"
                 >
-                  <FaNoteSticky color="#53b1ffff" mb="4" size={30} />
+                  <IoFolderSharp color="#53b1ffff" mb="4" size={30} />
+
                   <Text fontWeight="bold" fontSize="lg" mt={5}>
                     {folder.title}
                   </Text>
@@ -104,6 +107,7 @@ const Folders = () => {
                   </Button>
                 </Box>
               ))}
+            <Addnotes/> 
             </SimpleGrid>
           </Box>
 
@@ -183,6 +187,7 @@ const Folders = () => {
                     variant="ghost"
                     _hover={{ bg: "transparent" }}
                   >
+                    {" "}
                     <FiMoreHorizontal size={20} />
                   </Button>
                 </Box>
@@ -205,8 +210,11 @@ const Folders = () => {
             _hover={{ borderColor: "blue.300", cursor: "pointer" }}
             flexShrink={0}
           >
-            <TbPencilPlus size={32} color="gray" />
-            <Text color="gray.400" mt={3} fontSize="sm"></Text>
+            <HiPencilSquare size={32} color="gray" />
+
+            <Text color="gray.400" mt={3} fontSize="sm">
+              Add New Note
+            </Text>
           </Box>
         </Box>
       </Box>
