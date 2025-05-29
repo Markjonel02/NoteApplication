@@ -7,11 +7,16 @@ import {
   useBreakpointValue,
   Button,
   ButtonGroup,
-  Flex,
 } from "@chakra-ui/react";
+
 import { FiMoreHorizontal } from "react-icons/fi";
 import { useState } from "react";
 import { TbPencilPlus } from "react-icons/tb";
+import { FaNoteSticky } from "react-icons/fa6";
+import { FaFileCirclePlus } from "react-icons/fa6";
+import { IoFolderSharp } from "react-icons/io5";
+import { HiPencilSquare } from "react-icons/hi2";
+import Addnotes from "./Addnotes";
 const folders = [
   { title: "Movie Review", date: "12/12/2021", color: "blue.100" },
   { title: "Class Notes", date: "12/12/2021", color: "pink.100" },
@@ -52,70 +57,167 @@ const Folders = () => {
 
   const renderFolderContent = () => {
     return (
-      <SimpleGrid columns={columns} spacing={4} mt={4}>
-        {folders.map((folder, index) => (
-          <Box
-            key={index}
-            p={4}
-            bg={folder.color}
-            borderRadius="lg"
-            position="relative"
-          >
-            <Text fontWeight="bold">{folder.title}</Text>
-            <Text fontSize="sm" mt={2}>
-              {folder.date}
-            </Text>
-            <IconButton
-              icon={<FiMoreHorizontal />}
-              size="sm"
-              position="absolute"
-              top={2}
-              right={2}
-              aria-label="More"
-              variant="ghost"
-            />
-          </Box>
-        ))}
+      <Box position="relative" width="100%" mb={8}>
         <Box
-          border="2px dashed gray"
-          borderRadius="lg"
+          width={{ base: "100%" }}
+          pr={{ base: 0, md: 4 }}
+          mb={6}
           display="flex"
-          alignItems="center"
-          justifyContent="center"
-          h="100px"
+          flexDirection={{ base: "column", md: "column", lg: "row" }}
+          alignItems={{ base: "flex-start", md: "center" }}
+          gap={4}
         >
-          <Text color="gray.400">
-            <TbPencilPlus /> New Folder
-          </Text>
+          {/* Recent Folders */}
+          <Box flex="1">
+            <SimpleGrid
+              columns={{ base: 1, sm: 2, md: 2, lg: 3 }}
+              spacing={4}
+              mt={4}
+              gap={4}
+            >
+              {folders.slice(0, 3).map((folder, index) => (
+                <Box
+                  key={index}
+                  p={6}
+                  bg={folder.color}
+                  borderRadius="lg"
+                  position="relative"
+                  width="100%"
+                  boxShadow="md"
+                  textAlign="left"
+                >
+                  <IoFolderSharp color="#53b1ffff" mb="4" size={30} />
+
+                  <Text fontWeight="bold" fontSize="lg" mt={5}>
+                    {folder.title}
+                  </Text>
+                  <Text fontSize="12px" mt={1}>
+                    {folder.date}
+                  </Text>
+                  <Button
+                    size="sm"
+                    position="absolute"
+                    top={3}
+                    right={3}
+                    aria-label="More"
+                    variant="ghost"
+                    _hover={{ bg: "transparent" }}
+                  >
+                    <FiMoreHorizontal size={20} />
+                  </Button>
+                </Box>
+              ))}
+            <Addnotes/> 
+            </SimpleGrid>
+          </Box>
+
+          {/* Add New Folder Button */}
+          <Box
+            border="2px dashed gray"
+            borderRadius="lg"
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            w={{ base: "100%", md: "120px" }}
+            h={{ base: "auto", md: "100%" }}
+            minH={{ base: "100px", md: "auto" }}
+            p={4}
+            _hover={{ borderColor: "blue.300", cursor: "pointer" }}
+            flexShrink={0}
+          >
+            <FaFileCirclePlus size={32} color="gray" />
+
+            <Text color="gray.400" mt={3} fontSize="sm">
+              Add New Folder
+            </Text>
+          </Box>
         </Box>
-      </SimpleGrid>
+      </Box>
     );
   };
 
   const renderNoteContent = () => {
     return (
-      <SimpleGrid columns={columns} spacing={4} mt={4}>
-        {notes.map((note, index) => (
+      <Box position="relative" width="100%" mb={8}>
+        <Box
+          width={{ base: "100%" }}
+          pr={{ base: 0, md: 4 }}
+          mb={6}
+          display="flex"
+          flexDirection={{ base: "column", md: "column", lg: "row" }}
+          alignItems={{ base: "flex-start", md: "center" }}
+          gap={4}
+        >
+          {/* Recent Folders */}
+          <Box flex="1">
+            <SimpleGrid
+              columns={{ base: 1, sm: 2, md: 2, lg: 3 }}
+              spacing={4}
+              mt={4}
+              gap={4}
+            >
+              {notes.slice(0, 3).map((note, index) => (
+                <Box
+                  key={index}
+                  p={6}
+                  bg={note.color}
+                  borderRadius="lg"
+                  position="relative"
+                  width="100%"
+                  boxShadow="md"
+                  textAlign="left"
+                >
+                  <FaNoteSticky color="#53b1ffff" mb="4" size={30} />
+                  <Text fontWeight="bold" fontSize="lg" mt={5}>
+                    {note.title}
+                  </Text>
+                  <Text fontSize="12px" mt={1}>
+                    {note.content}
+                  </Text>
+                  <Text fontSize="12px" mt={1}>
+                    {note.date}
+                  </Text>
+                  <Button
+                    size="sm"
+                    position="absolute"
+                    top={3}
+                    right={3}
+                    aria-label="More"
+                    variant="ghost"
+                    _hover={{ bg: "transparent" }}
+                  >
+                    {" "}
+                    <FiMoreHorizontal size={20} />
+                  </Button>
+                </Box>
+              ))}
+            </SimpleGrid>
+          </Box>
+
+          {/* Add New Folder Button */}
           <Box
-            key={index}
-            p={4}
-            bg={note.color}
+            border="2px dashed gray"
             borderRadius="lg"
-            position="relative"
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            w={{ base: "100%", md: "120px" }}
+            h={{ base: "auto", md: "100%" }}
+            minH={{ base: "100px", md: "auto" }}
+            p={4}
+            _hover={{ borderColor: "blue.300", cursor: "pointer" }}
+            flexShrink={0}
           >
-            <Text fontSize="sm">{note.date}</Text>
-            <Text fontWeight="bold" mt={2}>
-              {note.title}
-            </Text>
-            <Text fontSize="sm" mt={2}>
-              {note.content}
-            </Text>
-            <Text fontSize="xs" mt={2}>
-              {note.time}
+            <HiPencilSquare size={32} color="gray" />
+
+            <Text color="gray.400" mt={3} fontSize="sm">
+              Add New Note
             </Text>
           </Box>
-        ))}
-      </SimpleGrid>
+        </Box>
+      </Box>
     );
   };
 

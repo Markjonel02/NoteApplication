@@ -13,11 +13,11 @@ function App() {
           <TopNavigation />
         </header>
         <MainContainer>
-          <Box display="flex" width="100%">
+          <Box display="flex" width="100%" height="100vh">
             <Box width="250px" padding="20px">
               <SideNavigationBar />
             </Box>
-            <Box flex="1" padding="20px">
+            <Box flex="1">
               <Text fontSize="2xl" fontWeight="bold">
                 Welcome to the Application
               </Text>
