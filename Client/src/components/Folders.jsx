@@ -16,7 +16,7 @@ import { FaNoteSticky } from "react-icons/fa6";
 import { FaFileCirclePlus } from "react-icons/fa6";
 import { IoFolderSharp } from "react-icons/io5";
 import { HiPencilSquare } from "react-icons/hi2";
-import Addnotes from "./Addnotes";
+
 const folders = [
   { title: "Movie Review", date: "12/12/2021", color: "blue.100" },
   { title: "Class Notes", date: "12/12/2021", color: "pink.100" },
@@ -107,7 +107,7 @@ const Folders = () => {
                   </Button>
                 </Box>
               ))}
-            <Addnotes/> 
+              {/*   <Addnotes/>  */}
             </SimpleGrid>
           </Box>
 
